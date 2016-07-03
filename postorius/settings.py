@@ -44,7 +44,7 @@ DEBUG = False
 # export POSTORIUS_ADMINS='admin:admin@example.org admin2:admin2@example.org'
 ADMINS = tuple([tuple(adm.split(':')) for adm in os.getenv('POSTORIUS_ADMINS', '').split()])
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('POSTORIUS_ALLOWED_HOSTS', 'localhost:8000').split()
 
 # Mailman API credentials
 MAILMAN_REST_API_URL = os.getenv('MAILMAN_API_URL', 'http://mailman:8001')
