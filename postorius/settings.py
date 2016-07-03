@@ -89,7 +89,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.media',
-                s'django.template.context_processors.static',
+                'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.template.context_processors.csrf',
                 'django.template.context_processors.request',
@@ -110,10 +110,10 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('POSTGRES_DB', 'postorius')
-        'USER': os.getnev('POSTGRES_USER', 'postorius')
-        'PASSWORD': os.getenv('POSTGRES_PASS', 'secret')
-        'HOST': os.getenv('POST_HOST', 'postgres')
+        'NAME': os.getenv('POSTGRES_DB', 'postorius'),
+        'USER': os.getenv('POSTGRES_USER', 'postorius'),
+        'PASSWORD': os.getenv('POSTGRES_PASS', 'secret'),
+        'HOST': os.getenv('POST_HOST', 'postgres'),
         'PORT': '',
     }
 }
