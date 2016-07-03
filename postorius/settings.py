@@ -46,6 +46,7 @@ ADMINS = tuple([tuple(adm.split(':')) for adm in os.getenv('POSTORIUS_ADMINS', '
 
 ALLOWED_HOSTS = os.getenv('POSTORIUS_ALLOWED_HOSTS', 'localhost:8000').split()
 BROWSERID_AUDIENCES = os.getenv('POSTORIUS_BROWSERID_AUDIENCES', 'localhost:8000').split()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Mailman API credentials
 MAILMAN_REST_API_URL = os.getenv('MAILMAN_API_URL', 'http://mailman:8001')
