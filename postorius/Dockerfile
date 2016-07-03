@@ -1,10 +1,6 @@
 FROM python:2
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gettext && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* && \
-  pip install 'postorius==1.0.3' 'psycopg2' 'gunicorn' && \
+RUN pip install 'postorius==1.0.3' 'whitenoise' 'psycopg2' 'gunicorn' && \
   useradd -r -m -d /var/lib/postorius -s /bin/bash postorius
 
 WORKDIR /var/lib/postorius
