@@ -19,4 +19,6 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push ushi/mailman
+      - curl -XPOST -u $MAILMAN_DEPLOY_USER:$MAILMAN_DEPLOY_PASS $MAILMAN_DEPLOY_HOOK
       - docker push ushi/postorius
+      - curl -XPOST -u $POSTORIUS_DEPLOY_USER:$POSTORIUS_DEPLOY_PASS $POSTORIUS_DEPLOY_HOOK
