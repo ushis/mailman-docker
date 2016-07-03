@@ -38,7 +38,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = os.getenv('POSTORIUS_SECRET_KEY', '3d2b4a5a760e7a4d73d526f4eaeb05a3')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('POSTORIUS_DEBUG', '') == 'True'
 
 # Define admins like so:
 # export POSTORIUS_ADMINS='admin:admin@example.org admin2:admin2@example.org'
@@ -113,7 +113,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB', 'postorius'),
         'USER': os.getenv('POSTGRES_USER', 'postorius'),
         'PASSWORD': os.getenv('POSTGRES_PASS', 'secret'),
-        'HOST': os.getenv('POST_HOST', 'postgres'),
+        'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
         'PORT': '',
     }
 }
