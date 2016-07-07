@@ -1,6 +1,11 @@
 FROM python:2
 
-RUN pip install 'postorius==1.0.3' 'whitenoise' 'psycopg2' 'gunicorn' && \
+RUN pip install \
+    'git+https://gitlab.com/mailman/mailmanclient.git' \
+    'postorius==1.0.3' \
+    'whitenoise' \
+    'psycopg2' \
+    'gunicorn' && \
   useradd -r -m -d /var/lib/postorius -s /bin/bash postorius
 
 WORKDIR /var/lib/postorius
