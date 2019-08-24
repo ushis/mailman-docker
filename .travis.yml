@@ -1,15 +1,23 @@
 ---
+language: generic
+
 sudo: false
 
 services:
   - docker
 
+before_script:
+  - npm install -g snyk
+  - snyk auth "${SNYK_API_TOKEN}"
+
 script:
   - docker build -t mailman .
+  - snyk test --docker mailman
 
 before_deploy:
   - if test -n "${TRAVIS_TAG}"; then
-      docker tag mailman "ushi/mailman:${TRAVIS_TAG}";
+      docker tag mailman "ushi/mailman:${TRAVIS_TAG}" &&
+        snyk monitor --docker "ushi/mailman:${TRAVIS_TAG}";
     else
       docker tag mailman "ushi/mailman:latest";
     fi
