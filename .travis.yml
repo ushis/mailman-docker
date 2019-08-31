@@ -11,15 +11,15 @@ before_script:
   - snyk auth "${SNYK_API_TOKEN}"
 
 script:
-  - docker build -t mailman .
-  - snyk test --docker mailman
+  - docker build -t ushi/mailman .
+  - snyk test --docker ushi/mailman
 
 before_deploy:
   - if test -n "${TRAVIS_TAG}"; then
-      docker tag mailman "ushi/mailman:${TRAVIS_TAG}" &&
+      docker tag ushi/mailman "ushi/mailman:${TRAVIS_TAG}" &&
         snyk monitor --docker "ushi/mailman:${TRAVIS_TAG}";
     else
-      docker tag mailman "ushi/mailman:latest";
+      docker tag ushi/mailman "ushi/mailman:latest";
     fi
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
 
