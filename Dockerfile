@@ -5,8 +5,7 @@ RUN apk add --no-cache \
   python3 \
   py3-psycopg2
 
-RUN pip3 install \
-  'mailman==3.3.0'
+RUN pip3 install 'mailman==3.3.1'
 
 RUN addgroup -S mailman && \
   adduser -h /var/lib/mailman -s /bin/sh -S -D mailman mailman
