@@ -1,8 +1,9 @@
-FROM alpine:3.10
+FROM alpine:3.12
 
 RUN apk add --no-cache \
   libc-dev \
   python3 \
+  py3-pip \
   py3-psycopg2
 
 RUN pip3 install 'mailman==3.3.1'
