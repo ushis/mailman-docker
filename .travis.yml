@@ -8,16 +8,13 @@ services:
 
 before_script:
   - npm install -g snyk
-  - snyk auth "${SNYK_API_TOKEN}"
 
 script:
   - docker build -t ushi/mailman .
-  - snyk test --docker ushi/mailman
 
 before_deploy:
   - if test -n "${TRAVIS_TAG}"; then
-      docker tag ushi/mailman "ushi/mailman:${TRAVIS_TAG}" &&
-        snyk monitor --docker "ushi/mailman:${TRAVIS_TAG}";
+      docker tag ushi/mailman "ushi/mailman:${TRAVIS_TAG}";
     else
       docker tag ushi/mailman "ushi/mailman:latest";
     fi
